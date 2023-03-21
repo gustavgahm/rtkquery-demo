@@ -1,5 +1,5 @@
-import { loadJson } from "./utilities";
-import { pick, map, find, pipe, sortBy } from "lodash/fp";
+import { loadJson, saveJson } from './utilities';
+import { pick, map, find, pipe, sortBy } from 'lodash/fp';
 
 export interface User {
   id: string;
@@ -9,7 +9,7 @@ export interface User {
 }
 
 const asUser: (x: any) => User = (x) =>
-  x ? pick(["id", "email", "firstName", "lastName"])(x) : null;
+  x ? pick(['id', 'email', 'firstName', 'lastName'])(x) : null;
 
 const asUsers = map(asUser);
 
@@ -18,16 +18,26 @@ const findById = (id) => find((x) => x.id.toString() === id);
 const queryById = (id: string) => pipe(findById(id), asUser);
 
 const load = async () => {
-  const { users } = await loadJson("data/users.json");
+  const { users } = await loadJson('data/users.json');
   return users;
 };
 
 export const loadUsers = async () => {
   const users = await load();
-  return pipe(sortBy(["firstName", "lastName"]))(asUsers(users));
+  return pipe(sortBy(['firstName', 'lastName']))(asUsers(users));
 };
 
 export const loadUser = async (id: string) => {
   const users = await load();
   return queryById(id)(users);
+};
+
+export const saveUser = async (id: string, data: User) => {
+  const users = await load();
+
+  const result = users.map((user) => {
+    return user.id === parseInt(id) ? data : user;
+  });
+
+  await saveJson('data/users.json', { users: result });
 };
