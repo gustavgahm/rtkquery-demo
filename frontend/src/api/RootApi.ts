@@ -9,9 +9,7 @@ export const rootApi = createApi({
     baseUrl,
   }),
 
-  tagTypes: [
-    'Users',
-  ],
+  tagTypes: ['Users', 'Posts'],
 
   endpoints: () => ({}),
 });

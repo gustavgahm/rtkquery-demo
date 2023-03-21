@@ -1,0 +1,26 @@
+{
+  "extends": ["react-app", "react-app/jest", "prettier"],
+  "plugins": ["simple-import-sort", "unused-imports"],
+  "ignorePatterns": ["**/vendor/**/*.*"],
+  "rules": {
+    // https://eslint.org/docs/latest/rules/prefer-const
+    "prefer-const": [
+      "warn",
+      {
+        "destructuring": "all"
+      }
+    ],
+
+    // https://eslint.org/docs/latest/rules/no-var
+    "no-var": "warn",
+
+    // https://github.com/lydell/eslint-plugin-simple-import-sort
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
+
+    // https://github.com/sweepline/eslint-plugin-unused-imports
+    "unused-imports/no-unused-imports": "warn",
+
+    "react-hooks/exhaustive-deps": "off"
+  }
+}
