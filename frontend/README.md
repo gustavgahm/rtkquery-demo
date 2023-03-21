@@ -1,0 +1,13 @@
+- Eslint
+- Prettier
+- TypeScript
+- Functional Programming
+- Container / Component
+- Wrap components in module
+- lodash-fb
+- Deconstruction/construction
+- Expressions true ? 'a' : 'b'
+- Redux ToolKit - RTK 
+- RTK Query
+- ts-pattern
+- Contexts
