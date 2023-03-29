@@ -41,7 +41,7 @@
     "webpack": "^5.74.0"
   },
   "scripts": {
-    "start": "cross-env TSC_WATCHFILE=UseFsEventsWithFallbackDynamicPolling react-scripts start",
+    "start": "cross-env TSC_WATCHFILE=UseFsEventsWithFallbackDynamicPolling PORT=3001 react-scripts start",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "eslint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "build": "react-scripts build",

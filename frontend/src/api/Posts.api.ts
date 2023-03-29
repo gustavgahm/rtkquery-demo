@@ -16,7 +16,7 @@ const api = rootApi.injectEndpoints({
         arg,
         { updateCachedData, cacheDataLoaded, cacheEntryRemoved }
       ) {
-        const ws = new WebSocket('ws://localhost:5000/posts');
+        const ws = new WebSocket('ws://localhost:5001/posts');
 
         await cacheDataLoaded;
 
