@@ -17,9 +17,19 @@ const Button = styled(MuiButton)(({ theme }) => ({
 export const Toolbar = () => (
   <AppBar position='static' sx={{ paddingLeft: '5rem' }}>
     <MuiToolbar disableGutters>
-      <Stack direction='row' spacing={2}>
+      <Stack
+        direction='row'
+        spacing={2}
+        sx={{
+          '.active': {
+            borderBottom: '3px solid white',
+          },
+        }}
+      >
         <Link to='/users'>
-          <Button startIcon={<UsersIcon />}>Users</Button>
+          <Button variant='text' startIcon={<UsersIcon />}>
+            Users
+          </Button>
         </Link>
         <Link to='/posts'>
           <Button startIcon={<PostsIcon />}>Posts</Button>
