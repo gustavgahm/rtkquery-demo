@@ -37,7 +37,7 @@ Stack.defaultProps = {
 };
 
 const TextFieldSkeleton = () => (
-  <Skeleton>
+  <Skeleton variant='rectangular' width='100%'>
     <TextField />
   </Skeleton>
 );

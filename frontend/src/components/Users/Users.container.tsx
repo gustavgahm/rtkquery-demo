@@ -3,7 +3,6 @@ import { User } from 'models';
 import React, { useCallback } from 'react';
 
 import Component from './Users.component';
-import Loading from './Users.loading';
 
 const Container: React.FC = () => {
   const { data, isLoading } = useUsersQuery();
@@ -13,12 +12,9 @@ const Container: React.FC = () => {
     prefetchUsers(user.id);
   }, []);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
   const props = {
     users: data ?? [],
+    isLoading,
     onUserHover: handleUserHover,
   };
 

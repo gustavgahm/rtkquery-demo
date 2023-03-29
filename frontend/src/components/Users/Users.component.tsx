@@ -1,15 +1,18 @@
-import { Stack as MuiStack, styled } from '@mui/material';
-import { User } from 'models';
+import { Box, Skeleton, Stack as MuiStack, styled } from '@mui/material';
+import { isEmpty, range } from 'lodash';
+import * as Models from 'models';
 import React, { useCallback } from 'react';
 
-import { UserRow } from './components/UserRow';
+import { User } from './components/User';
+import { UserSkeleton } from './UserSkeleton';
 
 interface Data {
-  users: User[];
+  users: Models.User[];
+  isLoading: boolean;
 }
 
 interface Callbacks {
-  onUserHover: (user: User) => void;
+  onUserHover: (user: Models.User) => void;
 }
 
 type Props = Data & Callbacks;
@@ -25,19 +28,32 @@ Stack.defaultProps = {
   spacing: 2,
 };
 
+const rowHeight = 50;
+
 const Component: React.FC<Props> = (props) => {
-  const { users } = props;
+  const stackRef = React.useRef<HTMLDivElement>();
+  const { users, isLoading } = props;
+
   const onUserHover = useCallback(
-    (user: User) => () => {
+    (user: Models.User) => () => {
       props.onUserHover(user);
     },
     []
   );
 
+  const containerHeight = stackRef.current?.clientHeight ?? rowHeight * 10;
+
   return (
-    <Stack>
+    <Stack ref={stackRef}>
+      {isLoading &&
+        range(containerHeight / rowHeight).map((i) => (
+          <div>
+            <Skeleton variant='rectangular' height={rowHeight} />
+          </div>
+        ))}
+
       {users.map((user) => (
-        <UserRow onMouseEnter={onUserHover(user)} key={user.id} user={user} />
+        <User key={user.id} user={user} onMouseEnter={onUserHover(user)} />
       ))}
     </Stack>
   );

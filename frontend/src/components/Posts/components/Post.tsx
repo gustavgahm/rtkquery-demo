@@ -1,11 +1,7 @@
 import { Divider, Stack as MuiStack, styled, Typography } from '@mui/material';
-import { Post } from 'models';
+import * as Models from 'models';
 import React from 'react';
 import { stringToColor } from 'utilities/Avatar';
-
-interface PostRowProps {
-  post: Post;
-}
 
 const Stack = styled(MuiStack)({});
 
@@ -44,15 +40,15 @@ Body.defaultProps = {
   variant: 'body1',
 };
 
-export const PostRow: React.FC<PostRowProps> = React.memo(({ post }) => {
+export const Post: React.FC<Models.Post> = React.memo((props) => {
   return (
     <>
-      <Stack sx={{ ...titleStyles(post.title) }}>
+      <Stack sx={{ ...titleStyles(props.title) }}>
         <Stack direction='row'>
-          <Title>{post.title}</Title>
-          <Timestamp>{post.timestamp}</Timestamp>
+          <Title>{props.title}</Title>
+          <Timestamp>{props.timestamp}</Timestamp>
         </Stack>
-        <Body>{post.body}</Body>
+        <Body>{props.body}</Body>
       </Stack>
       <Divider sx={({ spacing }) => ({ margin: spacing(2) })} />
     </>

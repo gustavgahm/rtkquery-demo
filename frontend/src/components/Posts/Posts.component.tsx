@@ -1,12 +1,12 @@
 import { Collapse, Stack as MuiStack, styled } from '@mui/material';
-import { Post } from 'models';
+import * as Models from 'models';
 import React from 'react';
 import { TransitionGroup } from 'react-transition-group';
 
-import { PostRow } from './components/PostRow';
+import { Post } from './components/Post';
 
 interface Data {
-  posts: Post[];
+  posts: Models.Post[];
 }
 
 type Props = Data;
@@ -24,7 +24,7 @@ const Component: React.FC<Props> = ({ posts }) => {
       <TransitionGroup>
         {posts.map((post) => (
           <Collapse key={post.id} timeout={1000}>
-            <PostRow post={post} />
+            <Post {...post} />
           </Collapse>
         ))}
       </TransitionGroup>

@@ -1,11 +1,12 @@
 import { Avatar, Stack as MuiStack, styled, Typography } from '@mui/material';
 import { Link } from 'components/Shared';
-import { fullName, User } from 'models';
+import * as Models from 'models';
+import { fullName } from 'models/User';
 import React from 'react';
 import { stringAvatar } from 'utilities/Avatar';
 
-interface UserRowProps {
-  user: User | null;
+interface UserProps {
+  user: Models.User | null;
   onMouseEnter: () => void;
 }
 const Stack = styled(MuiStack)({
@@ -18,7 +19,7 @@ Stack.defaultProps = {
   alignItems: 'center',
 };
 
-export const UserRow: React.FC<UserRowProps> = React.memo(
+export const User: React.FC<UserProps> = React.memo(
   ({ user, onMouseEnter }) => {
     return (
       <Link to={`/users/${user?.id}`} onMouseEnter={onMouseEnter}>
