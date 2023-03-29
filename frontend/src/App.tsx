@@ -2,6 +2,7 @@ import { CssBaseline, Stack } from '@mui/material';
 import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
 import { rootApi } from 'api/RootApi';
 import Posts from 'components/Posts';
+import { Toolbar } from 'components/Shared';
 import User from 'components/User';
 import Users from 'components/Users';
 import React from 'react';
@@ -39,25 +40,29 @@ function App() {
 export default App;
 
 const Layout = () => (
-  <div
-    style={{
-      height: '100vh',
-      display: 'flex',
-    }}
-  >
-    <CssBaseline />
-    <Stack
-      direction='row'
-      sx={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: '5rem',
-        border: '1px solid #ccc',
+  <>
+    <Toolbar />
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
       }}
     >
-      <Outlet />
-    </Stack>
-  </div>
+      <CssBaseline />
+      <Stack
+        direction='row'
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          margin: '5rem',
+          marginTop: '2rem',
+          border: '1px solid #ccc',
+        }}
+      >
+        <Outlet />
+      </Stack>
+    </div>
+  </>
 );
 
 const PostsPage = () => (
