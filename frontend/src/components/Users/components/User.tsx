@@ -7,7 +7,7 @@ import { stringAvatar } from 'utilities/Avatar';
 
 interface UserProps {
   user: Models.User | null;
-  onMouseEnter: () => void;
+  onMouseEnter?: () => void;
 }
 const Stack = styled(MuiStack)({
   cursor: 'pointer',

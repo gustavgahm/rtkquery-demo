@@ -12,7 +12,6 @@ interface Data {
 }
 
 interface Callbacks {
-  onUserHover: (user: Models.User) => void;
 }
 
 type Props = Data & Callbacks;
@@ -36,7 +35,6 @@ const Component: React.FC<Props> = (props) => {
 
   const onUserHover = useCallback(
     (user: Models.User) => () => {
-      props.onUserHover(user);
     },
     []
   );
