@@ -8,8 +8,6 @@ import {
   styled,
   Toolbar as MuiToolbar,
 } from '@mui/material';
-import { QueryStatus } from '@reduxjs/toolkit/dist/query';
-import { useSelector } from 'react-redux';
 
 import { Link } from './Link';
 
@@ -18,12 +16,7 @@ const Button = styled(MuiButton)(({ theme }) => ({
 }));
 
 export const Toolbar = () => {
-  const isLoading = useSelector((state: any) => {
-    return Object.values(state.api.queries).some((query: any) => {
-      return query && query.status === QueryStatus.pending;
-    });
-  });
-
+  const isLoading = false;
   const loadingStyles = !isLoading ? { visibility: 'hidden' } : null;
 
   return (
