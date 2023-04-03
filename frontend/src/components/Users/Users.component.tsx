@@ -1,10 +1,9 @@
-import { Box, Skeleton, Stack as MuiStack, styled } from '@mui/material';
-import { isEmpty, range } from 'lodash';
+import { Skeleton, Stack as MuiStack, styled } from '@mui/material';
+import { range } from 'lodash';
 import * as Models from 'models';
 import React, { useCallback } from 'react';
 
 import { User } from './components/User';
-import { UserSkeleton } from './components/UserSkeleton';
 
 interface Data {
   users: Models.User[];
