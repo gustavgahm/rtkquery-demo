@@ -38,6 +38,7 @@ app.post('/users/:id', async (req, res) => {
 });
 
 app.get('/posts', async (_, res) => {
+  await delay(3000);
   const posts = await loadPosts();
   res.json(take(10,posts));
 });
