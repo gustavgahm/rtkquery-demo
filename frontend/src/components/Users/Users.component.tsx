@@ -4,7 +4,7 @@ import * as Models from 'models';
 import React, { useCallback } from 'react';
 
 import { User } from './components/User';
-import { UserSkeleton } from './UserSkeleton';
+import { UserSkeleton } from './components/UserSkeleton';
 
 interface Data {
   users: Models.User[];
