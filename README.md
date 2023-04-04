@@ -1,6 +1,6 @@
 # rtkquery-demo
 
-To start the demo run *npm install* followed by *npm start* in both the frontend and backend folder.
+To start the demo run **npm install** followed by **npm start** in both the frontend and backend folder.
 
 [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
