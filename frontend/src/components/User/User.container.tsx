@@ -1,15 +1,20 @@
 import { User } from 'models';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Component from './User.component';
+import { useUserQuery } from 'api/Users.api';
 
 const Container: React.FC = () => {
   const { id } = useParams();
 
+  const { data, isLoading } = useUserQuery(parseInt(id!));
+
   const [user, setUser] = useState<User | null>(null);
 
-  const isLoading = true;
+  useEffect(() => {
+    setUser(data ?? null);
+  }, [data]);
 
   const handleFormChange = useCallback((key: keyof User, value: string) => {
     setUser((prev) => ({ ...prev, [key]: value } as User));

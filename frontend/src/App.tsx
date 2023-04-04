@@ -1,4 +1,6 @@
 import { CssBaseline, Stack } from '@mui/material';
+import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
+import { rootApi } from 'api/RootApi';
 import Posts from 'components/Posts';
 import { Toolbar } from 'components/Shared';
 import User from 'components/User';
@@ -15,7 +17,8 @@ import {
 function App() {
   return (
     <React.StrictMode>
-      <BrowserRouter>
+      <ApiProvider api={rootApi}>
+        <BrowserRouter>
           <Routes>
             <Route path='/' element={<Navigate to='/users' />} />
             <Route path='/users' element={<Layout />}>
@@ -26,7 +29,8 @@ function App() {
               <Route index element={<PostsPage />} />
             </Route>
           </Routes>
-      </BrowserRouter>
+        </BrowserRouter>
+      </ApiProvider>
     </React.StrictMode>
   );
 }
